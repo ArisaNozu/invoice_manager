@@ -27,6 +27,10 @@
 | received_date               | date     | null: false          | 受領日（カレンダー・必須）                    |
 | qualified_invoice_number    | string   |                      | 適格請求書発行事業者番号（T + 13桁の数字）      |
 | is_qualified_invoice_issuer | boolean  | null: false          | 適格請求書発行事業者かどうか（true: 適格事業者） |
+| net_amount               	  | integer	 | null: false	        | 本体金額（税抜金額）                         |
+| tax_amount	                | integer	 | null: false	        | 消費税額                                   |
+| total_amount	              | integer	 | null: false	        | 合計金額（本体金額＋消費税額）                 |
+| tax_rate	                  | decimal	 | null: false	        | 消費税率（例: 0.10 → 10%）                  |
 | tags                        | string   |                      | タグ（カンマ区切りなどで保存）                 |
 | memo                        | text     |                      | メモ欄                                     |
 

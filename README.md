@@ -31,7 +31,6 @@
 | tax_amount	                | integer	 | null: false	                  | 消費税額                                   |
 | total_amount	              | integer	 | null: false	                  | 合計金額（本体金額＋消費税額）                 |
 | tax_rate	                  | decimal	 | null: false	                  | 消費税率（例: 0.10 → 10%）                  |
-| tags                        | string   |                                | タグ（カンマ区切りなどで保存）                 |
 | memo                        | text     |                                | メモ欄                                     |
 
 

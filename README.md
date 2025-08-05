@@ -5,7 +5,7 @@
 | ------------------ | ------ | ------------------------- |----------------------------|
 | full_name          | string | null: false               | 氏名（全角）                 |
 | employee_number    | string | null: false, unique: true | 従業員番号                   |
-| department         | string | null: false               | 部署名（ActiveHash）        |
+| department         | integer | null: false               | 部署名（ActiveHash）        |
 | email              | string | null: false, unique: true | メールアドレス（ログインID）   |
 | encrypted_password | string | null: false               | 暗号化されたパスワード         |
 
@@ -20,8 +20,8 @@
 | Column                      | Type     | Options                        | 備考                                      |
 |-----------------------------|----------|--------------------------------|------------------------------------------|
 | file                        | string   |                                | 請求書ファイル（PDF/画像）                   |
-| status                      | string   | null: false                    | 処理ステータス（必須）（ActiveHash）          |
-| receipt_method              | string   | null: false                    | 受領形態（必須）  （ActiveHash）             |
+| status                      | integer  | null: false                    | 処理ステータス（必須）（ActiveHash）          |
+| receipt_method              | integer  | null: false                    | 受領形態（必須）  （ActiveHash）             |
 | client_id                   | integer  | null: false, foreign_key: true | 取引先ID（clientsテーブルのid）              |
 | due_date                    | date     | null: false                    | 期日（カレンダー・必須）                      |
 | received_date               | date     | null: false                    | 受領日（カレンダー・必須）                    |

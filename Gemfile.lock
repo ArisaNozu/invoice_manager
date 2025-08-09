@@ -80,6 +80,9 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
+    acts-as-taggable-on (12.0.0)
+      activerecord (>= 7.1, < 8.1)
+      zeitwerk (>= 2.4, < 3.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     base64 (0.3.0)
@@ -278,6 +281,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  acts-as-taggable-on
   bootsnap
   capybara
   debug

@@ -4,7 +4,6 @@ belongs_to :user
 belongs_to :client
 acts_as_taggable_on :tags
 
-
   # バリデーション
   validates :status, presence: true
   validates :receipt_method, presence: true

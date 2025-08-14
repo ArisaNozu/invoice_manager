@@ -12,7 +12,7 @@
 
 
   <header>
-    <div>Invoice Manager</div>
+    <div class='header-title'>Invoice Manager</div>
     <% wdays = ["日", "月", "火", "水", "木", "金", "土"] %>
     <%= Date.today.strftime("本日：%Y年%m月%d日") %> (<%= wdays[Date.today.wday] %>)
   </header>
@@ -21,6 +21,6 @@
     <%= yield %>
   </body>
 
-<footer><%= link_to "トップ画面に戻る", root_path %></footer>
+<footer class='footer'><%= link_to "トップ画面に戻る", root_path %></footer>
 
 </html>

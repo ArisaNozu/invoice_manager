@@ -31,7 +31,7 @@
 | tax_amount	                | integer	 | null: false	                  | 消費税額                                   |
 | total_amount	              | integer	 | null: false	                  | 合計金額（本体金額＋消費税額）                 |
 | tax_rate	                  | decimal	 | null: false	                  | 消費税率（例: 0.10 → 10%）                  |
-| memo                        | text     |                                | メモ欄                                     |
+| memo                        | text     |                                | メモ欄（500文字まで）                       |
 | receipt_frequency           | integer  | null: false                    | 請求書受領頻度（ActiveHash）                |
 
 

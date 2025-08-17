@@ -13,9 +13,12 @@ acts_as_taggable_on :tags
   validates :is_qualified_invoice_issuer, presence: true
   validates :net_amount, presence: true
   validates :tax_amount, presence: true
-  validates :total_amount, presence: true
   validates :tax_rate, presence: true
 
 
+  # 合計金額＝本体価格＋消費税額
+  def total_amount
+    net_amount + tax_amount
+  end
   
 end

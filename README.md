@@ -29,7 +29,7 @@
 | tax_rate	                  | decimal	 | null: false	                  | 消費税率（例: 0.10 → 10%）                  |
 | memo                        | text     |                                | メモ欄（500文字まで）                        | 
 |receipt_frequency            | integer  | null: false                    | 請求書受領頻度（ActiveHash）                 |
-|client_code                  | integer  | null: false    ※外部キーー                | 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |
+|client_code                  | integer  | null: false , foreign_key: true| 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |
 
 
 
@@ -51,8 +51,6 @@
 | phone_number       | string	  |                           | 電話番号                    |
 | address            | text	    |                           | 請求書送付先住所              |
 | notes              | text	    |                           | 備考・メモ欄                 |
-| created_at	       | datetime	| null: false	              | 作成日時（自動）             |
-| updated_at	       | datetime	| null: false	              | 更新日時（自動）             |
 
 
 

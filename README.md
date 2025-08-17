@@ -22,17 +22,14 @@
 | file                        | string   |                                | 請求書ファイル（PDF/画像）                   |
 | status                      | integer  | null: false                    | 処理ステータス（必須）（ActiveHash）          |
 | receipt_method              | integer  | null: false                    | 受領形態（必須）  （ActiveHash）             |
-<!-- | client_id                   | integer  | null: false, foreign_key: true | 取引先ID（clientsテーブルのid）              | -->
 | due_date                    | date     | null: false                    | 期日（カレンダー・必須）                      |
 | received_date               | date     | null: false                    | 受領日（カレンダー・必須）                    |
-<!-- | invoice_registration_number | string   |                                | 適格請求書発行事業者番号（T + 13桁の数字）      |
-| is_qualified_invoice_issuer | boolean  | null: false                    | 適格請求書発行事業者かどうか（true: 適格事業者） | -->
 | net_amount               	  | integer	 | null: false	                  | 本体金額（税抜金額）                         |
 | tax_amount	                | integer	 | null: false	                  | 消費税額                                   |
 | tax_rate	                  | decimal	 | null: false	                  | 消費税率（例: 0.10 → 10%）                  |
 | memo                        | text     |                                | メモ欄（500文字まで）                        | 
 |receipt_frequency            | integer  | null: false                    | 請求書受領頻度（ActiveHash）                 |
-|client_code                  | integer  | null: false                    | 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |
+|client_code                  | integer  | null: false    ※外部キーー                | 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |
 
 
 

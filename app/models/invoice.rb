@@ -1,7 +1,7 @@
 class Invoice < ApplicationRecord
   # アソシエーション
 belongs_to :user
-belongs_to :client
+belongs_to :client, foreign_key: :client_code, primary_key: :client_code, optional: true
 acts_as_taggable_on :tags
 
   # バリデーション

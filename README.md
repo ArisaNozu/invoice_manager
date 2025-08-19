@@ -26,7 +26,7 @@
 | received_date               | date     | null: false                    | 受領日（カレンダー・必須）                    |
 | net_amount               	  | integer	 | null: false	                  | 本体金額（税抜金額）                         |
 | tax_amount	                | integer	 | null: false	                  | 消費税額                                   |
-| tax_rate	                  | decimal	 | null: false	                  | 消費税率（例: 0.10 → 10%）                  |
+| tax_rate	                  | integer	 | null: false	                  | 消費税率（ActiveHash）                     |
 | memo                        | text     |                                | メモ欄（500文字まで）                        | 
 |receipt_frequency            | integer  | null: false                    | 請求書受領頻度（ActiveHash）                 |
 |client_code                  | integer  | null: false , foreign_key: true| 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |

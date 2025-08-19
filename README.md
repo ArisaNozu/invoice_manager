@@ -19,7 +19,7 @@
 
 | Column                      | Type     | Options                        | 備考                                      |
 |-----------------------------|----------|--------------------------------|------------------------------------------|
-| file                        | string   |                                | 請求書ファイル（PDF/画像）                   |
+| file                        | string   |                                | 請求書ファイル（PDF/画像） （ActiveStorage）  |
 | status                      | integer  | null: false                    | 処理ステータス（必須）（ActiveHash）          |
 | receipt_method              | integer  | null: false                    | 受領形態（必須）  （ActiveHash）             |
 | due_date                    | date     | null: false                    | 期日（カレンダー・必須）                      |

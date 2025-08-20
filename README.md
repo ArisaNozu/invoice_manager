@@ -43,7 +43,7 @@
 ## clientsテーブル
 | Column             | Type     | Options                   |                            |
 | ------------------ | -------- | ------------------------- |----------------------------|
-| client_code     	 | string	  | null: false, unique: true	| 取引先番号（社内管理用コード）  |
+| client_code     	 | string	  | null: false, unique: true	| 取引先番号（社内管理用コード）11桁の数字  |
 | name             	 | string	  | null: false	              | 取引先名（例：株式会社ABC）    |
 | invoice_registration_number | string   |                                | 適格請求書発行事業者番号（T + 13桁の数字）      |
 | is_qualified_invoice_issuer | boolean  | null: false                    | 適格請求書発行事業者かどうか（true: 適格事業者） |

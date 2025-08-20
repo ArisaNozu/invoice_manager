@@ -1,0 +1,80 @@
+
+<div>請求書新規装録</div>
+
+  <%= form_with model: @invoice, local: true, data: { turbo: false } do |f| %>
+  <%= render 'shared/error_messages', model: @invoice  %>
+
+
+
+<div>請求書ファイル（PDF/画像）</div>
+  <div class="click-upload">
+    <%= f.file_field :file, id:"invoice-file" %>
+  </div>
+
+<div>処理ステータス（必須）</div>
+  <div class="status">
+        <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+  </div>
+
+<div>受領形態（必須）</div>
+  <div class="receipt_method">
+        <%= f.collection_select(:receipt_method_id, ReceiptMethod.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+  </div>
+<div>
+
+<div data-controller="invoice">
+
+ <div>取引先番号（11桁の数字）</div>
+  <%= f.number_field :client_code,
+        data: {
+          action: "blur->invoice#fetchClientInfo input->invoice#clearClientIfEmpty",
+          invoice_target: "clientCode"
+        } %>
+  
+  <!-- 表示欄 -->
+  <div>取引先名</div>
+  <div data-invoice-target="clientName">------</div>
+  <div>適格請求書発行事業者番号（T + 13桁の数字）</div>
+  <div data-invoice-target="invoiceRegNo">--------------</div>
+  <div>適格請求書発行事業者かどうか</div>
+  <div data-invoice-target="qualifiedFlag">------</div>
+
+</div>
+
+
+
+
+</div>
+
+<div>請求書受領頻度</div>
+  <div class="receipt_frequency">
+        <%= f.collection_select(:receipt_frequency_id, ReceiptFrequency.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+
+<div>期日（カレンダー・必須）</div>
+
+
+<div>受領日（カレンダー・必須）</div>
+
+<div>消費税率</div>
+  <div class="tax_rate">
+        <%= f.collection_select(:tax_rate_id, TaxRate.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+
+
+<div>本体金額（税抜金額）</div>
+    <%= f.number_field :net_amount %>
+
+<div>消費税額 </div>
+    <%= f.number_field :tax_amount %>
+
+<div>合計金額（本体金額＋消費税額）</div>
+※表示のみ※
+
+
+
+<div>メモ欄 </div>
+  <%= f.text_area :memo, class:"invoice-memo", id:"invoice-memo", placeholder:"メモ欄 （500文字まで)", maxlength:"500" %>
+
+
+
+  <div><%= f.submit "保存" %> </div>
+<% end %>

@@ -55,19 +55,31 @@
 
 <div>受領日（カレンダー・必須）</div>
 
-<div>消費税率</div>
-  <div class="tax_rate">
-        <%= f.collection_select(:tax_rate_id, TaxRate.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
 
+<div data-controller="invoice">
+  <!-- 税率 -->
+  <div>消費税率</div>
+  <%= f.collection_select(
+        :tax_rate_id,
+        TaxRate.all, :id, :name, {},
+        { class: "select-box",
+          data: { action: "change->invoice#recalcTax", invoice_target: "taxRate" } }
+      ) %>
 
-<div>本体金額（税抜金額）</div>
-    <%= f.number_field :net_amount %>
+  <!-- 本体金額 -->
+  <div>本体金額（税抜）</div>
+  <%= f.number_field :net_amount,
+        data: { action: "input->invoice#recalcTax", invoice_target: "netAmount" } %>
 
-<div>消費税額 </div>
-    <%= f.number_field :tax_amount %>
+  <!-- 消費税額 -->
+  <div>消費税額</div>
+  <%= f.number_field :tax_amount, readonly: true,
+        data: { invoice_target: "taxAmount" } %>
 
-<div>合計金額（本体金額＋消費税額）</div>
-※表示のみ※
+  <!-- 合計金額 -->
+  <div>合計金額</div>
+  <div data-invoice-target="totalAmount">0</div>
+</div>
 
 
 

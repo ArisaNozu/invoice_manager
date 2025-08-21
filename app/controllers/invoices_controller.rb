@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
   end
 
   def new
+        @invoices = Invoice.new
   end
 
   def invoice_params

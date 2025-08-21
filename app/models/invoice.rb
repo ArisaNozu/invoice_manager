@@ -21,7 +21,7 @@ acts_as_taggable_on :tags
 
   # 合計金額＝本体価格＋消費税額
   def total_amount
-    net_amount + tax_amount
+    net_amount.to_i + tax_amount.to_i
   end
 
 

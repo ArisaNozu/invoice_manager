@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_19_022157) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_21_034437) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,7 +68,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_022157) do
     t.integer "tax_amount", null: false
     t.integer "tax_rate", null: false
     t.text "memo"
+    t.date "transaction_date", null: false
     t.index ["client_code"], name: "index_invoices_on_client_code"
+    t.index ["transaction_date"], name: "index_invoices_on_transaction_date"
   end
 
   create_table "taggings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

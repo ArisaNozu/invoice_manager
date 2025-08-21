@@ -30,6 +30,7 @@
 | memo                        | text     |                                | メモ欄（500文字まで）                        | 
 |receipt_frequency            | integer  | null: false                    | 請求書受領頻度（ActiveHash）                 |
 |client_code                  | integer  | null: false , foreign_key: true| 取引先ID（clientsテーブルの取引先番号（社内管理用コード））              |
+| transaction_date            | date     | null: false                    | 取引日（カレンダー・必須）                    |
 
 
 

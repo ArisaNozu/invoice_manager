@@ -50,10 +50,13 @@
   <div class="receipt_frequency">
         <%= f.collection_select(:receipt_frequency_id, ReceiptFrequency.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
 
-<div>期日（カレンダー・必須）</div>
+<div>取引日（必須）</div>
+  <%= f.date_field :transaction_date, required: true %>
+
+<div>期日（必須）</div>
   <%= f.date_field :due_date, required: true %>
 
-<div>受領日（カレンダー・必須）</div>
+<div>受領日（必須）</div>
   <%= f.date_field :received_date, required: true %>
 
 <div data-controller="invoice">

@@ -13,6 +13,7 @@ acts_as_taggable_on :tags
   validates :net_amount, presence: true
   validates :tax_amount, presence: true
   validates :tax_rate_id, presence: true
+  validates :transaction_date, presence: true
 
   validates :net_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :tax_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }

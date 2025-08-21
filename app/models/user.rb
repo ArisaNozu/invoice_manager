@@ -1,19 +1,15 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # ActiveHash（department）との関連
+  has_many :invoices, dependent: :nullify
+
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :department
+  belongs_to_active_hash :department_master, class_name: "Department", foreign_key: :department
 
   # バリデーション
   validates :full_name, presence: true
   validates :employee_number, presence: true, uniqueness: true
-  validates :department_id, presence: true, numericality: { other_than: 0, message: "を選択してください" }
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :encrypted_password, presence: true
-
-
+  validates :department, presence: true, numericality: { other_than: 0, message: "を選択してください" }
+  
 end

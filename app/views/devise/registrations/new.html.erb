@@ -4,6 +4,24 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :full_name, "氏名（全角）" %><br>
+    <%= f.text_field :full_name, autofocus: true, autocomplete: "name", required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :employee_number, "従業員番号" %><br>
+    <%= f.text_field :employee_number, autocomplete: "off", required: true %>
+    </div>
+
+  <div class="field">
+    <%= f.label :department, "部署" %><br>
+    <%= f.collection_select :department, Department.all, :id, :name,
+          { prompt: "--- 選択してください ---" },
+          { class: "select-box", required: true } %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

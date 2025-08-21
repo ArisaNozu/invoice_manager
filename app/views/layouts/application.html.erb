@@ -15,6 +15,17 @@
     <div class='header-title'>Invoice Manager</div>
     <% wdays = ["日", "月", "火", "水", "木", "金", "土"] %>
     <%= Date.today.strftime("本日：%Y年%m月%d日") %> (<%= wdays[Date.today.wday] %>)
+  
+    <div class='user'>
+            <% if user_signed_in? %>
+      <%= link_to current_user.full_name, "#", class: "full_name"%>
+      <%= link_to 'ログアウト',destroy_user_session_path, data: {turbo_method: :delete}, class: "logout"%>
+
+            <% else %>
+      <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+      <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+            <% end %>
+  
   </header>
 
   <body>

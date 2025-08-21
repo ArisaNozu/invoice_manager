@@ -67,20 +67,50 @@
       ) %>
 
   <!-- 本体金額 -->
-  <div>本体金額（税抜）</div>
+  <div>本体金額（円）</div>
   <%= f.number_field :net_amount,
         data: { action: "input->invoice#recalcTax", invoice_target: "netAmount" } %>
 
-  <!-- 消費税額 -->
-  <div>消費税額</div>
-  <%= f.number_field :tax_amount, readonly: true,
-        data: { invoice_target: "taxAmount" } %>
+  <!-- 端数処理 -->
+  <div>
+    <label>端数処理</label>
+    <select data-action="change->invoice#recalcTax" data-invoice-target="roundingMode">
+      <option value="floor">切り捨て</option>
+      <option value="round">四捨五入</option>
+      <option value="ceil">切り上げ</option>
+    </select>
+  </div>
 
-  <!-- 合計金額 -->
-  <div>合計金額</div>
-  <div data-invoice-target="totalAmount">0</div>
-</div>
+  <!-- 調整額（+/-） -->
+  <div>
+    <label>※税額調整（円）</label>
+    <input type="number" value="0"
+           data-action="input->invoice#recalcTax"
+           data-invoice-target="taxAdjust">
+  </div>
 
+  <!-- 手動上書き　実装する場合は有効化 -->
+  <%# <div>
+    <label>
+      <input type="checkbox"
+             data-action="change->invoice#toggleOverride change->invoice#recalcTax"
+             data-invoice-target="overrideToggle">
+      税額を手動で上書きする
+    </label>
+  </div> %>
+
+  <!-- 消費税額（自動 or 手動） -->
+  <div>消費税額（円）</div>
+  <%= f.number_field :tax_amount,
+        data: { invoice_target: "taxAmount" },
+        readonly: true %>
+ 
+  <!-- 合計額（自動計算・手動変更不可） -->
+  <div>合計額（円）</div>
+  <%= f.number_field :total_amount,
+        data: { invoice_target: "totalAmount" },
+        readonly: true %>
+  </div>
 
 
 <div>メモ欄 </div>
@@ -90,3 +120,4 @@
 
   <div><%= f.submit "保存" %> </div>
 <% end %>
+

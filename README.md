@@ -22,7 +22,7 @@
 | file                        | string   |                                | 請求書ファイル（PDF/画像） （ActiveStorage）  |
 | status                      | integer  | null: false                    | 処理ステータス（必須）（ActiveHash）          |
 | receipt_method              | integer  | null: false                    | 受領形態（必須）  （ActiveHash）             |
-| due_date                    | date     | null: false                    | 期日（カレンダー・必須）                      |
+| due_date                    | date     | null: false                    | 支払期日（カレンダー・必須）                      |
 | received_date               | date     | null: false                    | 受領日（カレンダー・必須）                    |
 | net_amount               	  | integer	 | null: false	                  | 本体金額（税抜金額）                         |
 | tax_amount	                | integer	 | null: false	                  | 消費税額                                   |

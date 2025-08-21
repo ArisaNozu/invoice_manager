@@ -5,20 +5,33 @@ belongs_to :client, foreign_key: :client_code, primary_key: :client_code, option
 acts_as_taggable_on :tags
 
   # バリデーション
-  validates :status, presence: true
-  validates :receipt_method, presence: true
-  validates :client_id, presence: true
+  validates :status_id, presence: true
+  validates :receipt_method_id, presence: true
+  validates :client_code, presence: true
   validates :due_date, presence: true
   validates :received_date, presence: true
-  validates :is_qualified_invoice_issuer, presence: true
   validates :net_amount, presence: true
   validates :tax_amount, presence: true
-  validates :tax_rate, presence: true
+  validates :tax_rate_id, presence: true
+
+  validates :net_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :tax_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 
   # 合計金額＝本体価格＋消費税額
   def total_amount
     net_amount + tax_amount
   end
+
+
+before_validation :normalize_amounts
+
+private
+
+  def normalize_amounts
+    self.net_amount = net_amount.to_s.delete(',') if net_amount.present?
+    self.tax_amount = tax_amount.to_s.delete(',') if tax_amount.present?
+  end
+
   
 end

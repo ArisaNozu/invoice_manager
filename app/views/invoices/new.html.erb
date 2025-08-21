@@ -68,8 +68,8 @@
 
   <!-- 本体金額 -->
   <div>本体金額（円）</div>
-  <%= f.number_field :net_amount,
-        data: { action: "input->invoice#recalcTax", invoice_target: "netAmount" } %>
+  <%= f.text_field :net_amount,
+      data: { action: "input->invoice#formatNetAmount", invoice_target: "netAmount" } %>
 
   <!-- 端数処理 -->
   <div>
@@ -99,17 +99,18 @@
     </label>
   </div> %>
 
-  <!-- 消費税額（自動 or 手動） -->
-  <div>消費税額（円）</div>
-  <%= f.number_field :tax_amount,
-        data: { invoice_target: "taxAmount" },
-        readonly: true %>
- 
-  <!-- 合計額（自動計算・手動変更不可） -->
-  <div>合計額（円）</div>
-  <%= f.number_field :total_amount,
-        data: { invoice_target: "totalAmount" },
-        readonly: true %>
+<!-- 消費税額（自動 or 手動） -->
+<div>消費税額</div>
+<%= f.text_field :tax_amount,
+      data: { invoice_target: "taxAmount" },
+      readonly: true %>
+
+<!-- 合計額（自動計算・手動変更不可） -->
+<div>合計額</div>
+<%= f.text_field :total_amount,
+      data: { invoice_target: "totalAmount" },
+      readonly: true %>
+
   </div>
 
 

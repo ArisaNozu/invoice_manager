@@ -10,3 +10,19 @@
   justify-content: right;
   background-color:lightgray;
 }
+
+
+.page-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.page-subtitle {
+}
+.invoice-subject {
+  width:600px;
+}
+
+.invoice-memo {
+  width:600px;
+}

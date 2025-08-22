@@ -10,26 +10,29 @@
 
 <%# 請求書一覧 %>
   <div class='invoice-list'>
-    <div class="subtitle" >
+    <div class="page-title" >
       請求書一覧
     </div>
-<ul class='item-lists'>
+<ul class='invoice-lists'>
   <% if @invoices.any? %>
     <% @invoices.each do |invoice| %>
-      <li class='list'>
+      <div class='list'>
 
           <%= link_to invoice_path(invoice), class: 'invoice-link' do %>
-        <div class='invoice-info'>
-          <h3 class='invoice-name'><%= invoice.subject %></h3>
+        <div class='invoice-index-info'>
+          <div class='invoice-index-content'><%= invoice.subject %></div>
+          <div class='invoice-index-content'><%= invoice.client.name %></div>
+          <div class='invoice-index-content'>支払期日：<%= invoice.due_date %></div>
+          <div class='invoice-index-content'><%= invoice.status_master&.name || "未設定" %></div>
         </div>
     <% end %>
       </li>
     <% end %>
   <% else %>
-    <li class='list'>
+    <div class='list'>
       <%= link_to '#' do %>
-       <div class='invoice-info'>
-          <h3 class='invoice-name'>請求書情報が未登録です</h3>
+       <div class='invoice-index-info'>
+          <div class='invoice-index-content'>請求書情報が未登録です</div>
         </div>
       <% end %>
     </li>

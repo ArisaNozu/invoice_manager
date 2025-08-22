@@ -1,0 +1,45 @@
+
+<%# 
+<div>今後の支払対応期限</div>
+<div>20◯/◯/◯ 支払の対応期限: 20◯◯/◯/◯◯</div>
+<div>20◯/◯/◯ 支払の対応期限: 20◯◯/◯/◯◯</div>
+<div>20◯/◯/◯ 支払の対応期限: 20◯◯/◯/◯◯</div>
+<div>20◯/◯/◯ 支払の対応期限: 20◯◯/◯/◯◯</div>
+
+<div>対応期限が迫っている請求書一覧</div> %>
+
+<%# 請求書一覧 %>
+  <div class='invoice-list'>
+    <div class="subtitle" >
+      請求書一覧
+    </div>
+<ul class='item-lists'>
+  <% if @invoices.any? %>
+    <% @invoices.each do |invoice| %>
+      <li class='list'>
+
+          <%= link_to invoice_path(invoice), class: 'invoice-link' do %>
+        <div class='invoice-info'>
+          <h3 class='invoice-name'><%= invoice.subject %></h3>
+        </div>
+    <% end %>
+      </li>
+    <% end %>
+  <% else %>
+    <li class='list'>
+      <%= link_to '#' do %>
+       <div class='invoice-info'>
+          <h3 class='invoice-name'>請求書情報が未登録です</h3>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>  
+<%# /商品一覧 %>
+
+<%= link_to "請求書情報を新規追加する", new_invoice_path %>
+<div>請求書情報を更新する（※未実装）</div>
+<div>請求書情報を削除する（※未実装）</div>
+<div>取引先情報を新規追加する（※未実装）</div>
+<div>取引先情報を更新する（※未実装）</div>
+

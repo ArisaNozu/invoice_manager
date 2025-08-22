@@ -13,18 +13,18 @@
 
 <div>処理ステータス（必須）</div>
   <div class="status">
-        <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:status, Status.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
   </div>
 
 <div>受領形態（必須）</div>
   <div class="receipt_method">
-        <%= f.collection_select(:receipt_method_id, ReceiptMethod.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:receipt_method, ReceiptMethod.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
   </div>
 <div>
 
 <div data-controller="invoice">
 
- <div>取引先番号（11桁の数字）</div>
+ <div>取引先番号（11桁の数字）（必須）</div>
   <%= f.number_field :client_code,
         data: {
           action: "blur->invoice#fetchClientInfo input->invoice#clearClientIfEmpty",
@@ -46,14 +46,14 @@
 
 </div>
 
-<div>請求書受領頻度</div>
+<div>請求書受領頻度（必須）</div>
   <div class="receipt_frequency">
-        <%= f.collection_select(:receipt_frequency_id, ReceiptFrequency.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:receipt_frequency, ReceiptFrequency.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
 
 <div>取引日（必須）</div>
   <%= f.date_field :transaction_date, required: true %>
 
-<div>期日（必須）</div>
+<div>支払期日（必須）</div>
   <%= f.date_field :due_date, required: true %>
 
 <div>受領日（必須）</div>
@@ -63,20 +63,20 @@
   <!-- 税率 -->
   <div>消費税率</div>
   <%= f.collection_select(
-        :tax_rate_id,
+        :tax_rate,
         TaxRate.all, :id, :name, {},
         { class: "select-box",
           data: { action: "change->invoice#recalcTax", invoice_target: "taxRate" } }
       ) %>
 
   <!-- 本体金額 -->
-  <div>本体金額（円）</div>
+  <div>本体金額（円）（必須）</div>
   <%= f.text_field :net_amount,
       data: { action: "input->invoice#formatNetAmount", invoice_target: "netAmount" } %>
 
   <!-- 端数処理 -->
   <div>
-    <label>端数処理</label>
+    <label>端数処理（必須）</label>
     <select data-action="change->invoice#recalcTax" data-invoice-target="roundingMode">
       <option value="floor">切り捨て</option>
       <option value="round">四捨五入</option>

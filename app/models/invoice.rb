@@ -5,14 +5,14 @@ belongs_to :client, foreign_key: :client_code, primary_key: :client_code, option
 acts_as_taggable_on :tags
 
   # バリデーション
-  validates :status_id, presence: true
-  validates :receipt_method_id, presence: true
+  validates :status, presence: true
+  validates :receipt_method, presence: true
   validates :client_code, presence: true
   validates :due_date, presence: true
   validates :received_date, presence: true
   validates :net_amount, presence: true
   validates :tax_amount, presence: true
-  validates :tax_rate_id, presence: true
+  validates :tax_rate, presence: true
   validates :transaction_date, presence: true
 
   validates :net_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }

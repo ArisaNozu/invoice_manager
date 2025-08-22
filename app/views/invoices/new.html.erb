@@ -4,7 +4,8 @@
   <%= form_with model: @invoice, local: true, data: { turbo: false } do |f| %>
   <%= render 'shared/error_messages', model: @invoice  %>
 
-
+<div>案件名 </div>
+  <%= f.text_field :subject,class: "invoice-subject",id: "invoice-subject",placeholder: "案件名 （100文字まで)",maxlength: 100 %>
 
 <div>請求書ファイル（PDF/画像）</div>
   <div class="click-upload">

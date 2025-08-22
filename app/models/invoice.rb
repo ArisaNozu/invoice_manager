@@ -18,6 +18,7 @@ acts_as_taggable_on :tags
   validates :net_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :tax_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  validates :subject, length: { maximum: 100 }
 
   # 合計金額＝本体価格＋消費税額
   def total_amount

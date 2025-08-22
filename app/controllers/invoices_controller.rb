@@ -26,7 +26,7 @@ class InvoicesController < ApplicationController
     :file, :status, :receipt_method, :due_date, :received_date,
     :transaction_date, 
     :net_amount, :tax_amount, :tax_rate, :memo,
-    :receipt_frequency, :client_code, tag_list: []
+    :receipt_frequency, :client_code, :subject, tag_list: []
   )
   end
 

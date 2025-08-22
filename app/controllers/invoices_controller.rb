@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = current_user.invoices.new(invoice_params)
     if @invoice.save
-      redirect_to @invoice, notice: "投稿しました"
+      redirect_to invoices_path, notice: "投稿しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,10 +23,10 @@ class InvoicesController < ApplicationController
 
   def invoice_params
   params.require(:invoice).permit(
-    :file, :status_id, :receipt_method_id, :due_date, :received_date,
+    :file, :status, :receipt_method, :due_date, :received_date,
     :transaction_date, 
-    :net_amount, :tax_amount, :tax_rate_id, :memo,
-    :receipt_frequency_id, :client_code, tag_list: []
+    :net_amount, :tax_amount, :tax_rate, :memo,
+    :receipt_frequency, :client_code, tag_list: []
   )
   end
 

@@ -1,5 +1,6 @@
 class CreateClients < ActiveRecord::Migration[7.1]
   def change
+    return if table_exists?(:clients)
     create_table :clients do |t|
       t.string  :client_code, null: false
       t.string  :name, null: false
@@ -14,5 +15,7 @@ class CreateClients < ActiveRecord::Migration[7.1]
     add_index :clients, :client_code, unique: true
     add_index :clients, :name
     add_index :clients, :invoice_registration_number, unique: true
+    
+    add_index :clients, :code, unique: true unless index_exists?(:clients, :code)
   end
 end
